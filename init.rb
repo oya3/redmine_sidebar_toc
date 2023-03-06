@@ -6,4 +6,5 @@ Redmine::Plugin.register :redmine_sidebar_toc do
   version '0.0.1'
   url 'https://github.com/twinslash/redmine_sidebar_toc'
   author_url 'twinslash.com'
+  # assets :javascripts => ['sidebar_toc.js']
 end
