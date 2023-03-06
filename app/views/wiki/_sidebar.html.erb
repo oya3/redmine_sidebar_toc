@@ -7,7 +7,7 @@
 <%= link_to l(:label_index_by_date), {:controller => 'wiki', :project_id => @project, :action => 'date_index'} %><br />
 
 <% unless @content.nil?  %>
-<div class="toc_contents" style="overflow-x: hidden; overflow-y: scroll;">
+<div class="toc_contents">
   <h3 >Сontents</h3>
   <% nodes =  Nokogiri::HTML(textilizable(@content, :text)).xpath('//h1|//h2|//h3|//h4|//h5|//h6') %>
   <% link_href = Nokogiri::HTML(textilizable(@content, :text)).xpath('//a[@name]/@name') %>
