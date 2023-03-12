@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"> 
+<style type="text/css">
+li {
+  cursor: pointer;
+}
+</style>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" language="javascript">
+ $(function () {
+     $('.sidebar_toc_item').click(function(e) {
+         $(this).children('ul').slideToggle('fast');
+         e.stopPropagation();
+     });
+ });
+</script>
+<title>タイトル</title>
+</head>
+<body>
+  <ul>
+    <ul>
+      <li class="sidebar_toc_item">メニュー 1-1</span>
+        <ul>
+          <li class="sidebar_toc_item">メニュー 1-1-1</span>
+            <ul>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-1</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-2</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-3</a></li>
+            </ul>
+          </li>
+          <li class="sidebar_toc_item">メニュー 1-1-2
+            <ul>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-1</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-2</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <li class="sidebar_toc_item">メニュー 1-2
+      <ul>
+        <li class="sidebar_toc_item">メニュー 1-2-1
+          <ul>
+            <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-1</a></li>
+            <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-2</a></li>
+            <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-3</a></li>
+          </ul>
+        </li>
+        <li class="sidebar_toc_item">メニュー 1-2-2
+          <ul>
+            <li><a href="#">メニュー 1-2-2-1</a></li>
+            <li><a href="#">メニュー 1-2-2-2</a></li>
+            <li><a href="#">メニュー 1-2-2-2</a></li>
+          </ul>  
+        </li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
+

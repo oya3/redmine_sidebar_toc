@@ -7,15 +7,53 @@
 <%= link_to l(:label_index_by_date), {:controller => 'wiki', :project_id => @project, :action => 'date_index'} %><br />
 
 <% unless @content.nil?  %>
-<div class="toc_contents">
-  <h3 >Сontents</h3>
+  <div class="toc_contents">
+  <h3>Сontents</h3>
   <% nodes =  Nokogiri::HTML(textilizable(@content, :text)).xpath('//h1|//h2|//h3|//h4|//h5|//h6') %>
-  <% link_href = Nokogiri::HTML(textilizable(@content, :text)).xpath('//a[@name]/@name') %>
-
-  <% nodes.each_with_index do |node,i|%>
-    <%= "<a href=\"##{link_href[i]}\" style=\"margin-left:#{nodes[i].name.delete("h").to_i*10}px;\">#{node.text.delete "¶"}</a>".html_safe %><br>
-    <%end%>
-</div>
+  <% hrefs = Nokogiri::HTML(textilizable(@content, :text)).xpath('//a[@name]/@name') %>
+  <% index = 0 %>
+  <% items = [] %>
+  <% while nodes.length > index do %>
+    <% node = nodes[index] %>
+    <% href = hrefs[index] %>
+    <% index += 1 %>
+    <% h = node.name.delete("h").to_i %>
+    <% next if h > 4 %>
+    <% text = node.text.delete("¶") %>
+    <% items.push({:h => h, :text => text, :href => href, :index => index}) %>
+  <% end %>
+  <% oh = 0 %>
+  <% items.each_with_index do |item,i| %>
+    <% ni = (i+1) == items.length ? (items.length-1): (i+1) %>
+    <% nh = items[ni][:h] %>
+    <% if false %>
+    <%= "<!-- ++++ #{item}, #{nh} -->".html_safe %>
+    <% end %>
+    <% next_li = "</li>" %>
+    <% if item[:h] < nh %>
+      <% next_li = "" %>
+    <% end %>
+    <% if oh < item[:h] %>
+      <% (item[:h] - oh).times do %>
+        <ul>
+      <% end %>
+      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[02: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
+    <% elsif oh > item[:h] %>
+      <% (oh - item[:h]).times do %>
+        </ul>
+      <% end %>
+      </li>
+      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[02: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
+    <% else %>
+      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[03: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
+    <% end %>
+    <% oh = item[:h] %>
+  <% end %>
+  <% (oh-1).times do %>
+    </ul>
+  <% end %>
+  </li>
+  </div>
 <% end %>
 
 <% if @wiki && @wiki.sidebar -%>

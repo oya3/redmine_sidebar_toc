@@ -9,10 +9,10 @@
 // });
 
 $(function() {
+  // tockサイドバーを画面上部でスクロール停止
   var $toc = $('.toc_contents'),
       $window = $(window),
       tocTop = $toc.offset().top;
-  
   $window.on('scroll', function() {
     if ($window.scrollTop() >= tocTop) {
       $toc.css({
@@ -26,6 +26,11 @@ $(function() {
         height: 'auto'
       });
     }
+  });
+  // tockサイドバーを展開する
+  $('.sidebar_toc_item').click(function(e) {
+    $(this).children('ul').slideToggle('fast');
+    e.stopPropagation();
   });
 });
 
