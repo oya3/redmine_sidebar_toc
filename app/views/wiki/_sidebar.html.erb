@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'sidebar_toc', plugin: 'redmine_sidebar_toc' %>
 <%= javascript_include_tag 'sidebar_toc', plugin: 'redmine_sidebar_toc' %>
 
 <h3><%= l(:label_wiki) %></h3>
@@ -27,7 +28,10 @@
     <% ni = (i+1) == items.length ? (items.length-1): (i+1) %>
     <% nh = items[ni][:h] %>
     <% if false %>
-    <%= "<!-- ++++ #{item}, #{nh} -->".html_safe %>
+      1. １個前のHnと現在のHnの差分でulを設定／解除を繰り返す
+      2. 現在のHnに子供が存在する場合は、</li> を付加しない
+      <%= "<!-- ++++ #{item}, #{nh} -->".html_safe %>
+      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[01: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
     <% end %>
     <% next_li = "</li>" %>
     <% if item[:h] < nh %>
@@ -37,16 +41,14 @@
       <% (item[:h] - oh).times do %>
         <ul>
       <% end %>
-      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[02: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
     <% elsif oh > item[:h] %>
       <% (oh - item[:h]).times do %>
         </ul>
       <% end %>
       </li>
-      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[02: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
     <% else %>
-      <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[03: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
     <% end %>
+    <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">#{item[:text]}</a>#{next_li}".html_safe %>
     <% oh = item[:h] %>
   <% end %>
   <% (oh-1).times do %>
