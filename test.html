@@ -9,8 +9,6 @@ li {
 ul li.has-child:before {
   content: '+';
   padding-right: 5px;
-  position: absolute;  /* 追加 */
-  left: 0;  /* 追加 */
 }
 ul li.has-child.open:before {
   content: '-';
@@ -30,11 +28,9 @@ ul li.has-child.open:before {
      });
 
      $('.has-child').on('click',function(e){
-         if ($(this).children('ul').length > 0) {
-            $(this).toggleClass('open');
-            $(this).children('ul').slideToggle('fast');
-            e.stopPropagation();
-         }
+         $(this).toggleClass('open');
+         $(this).children('ul').slideToggle('fast');
+         e.stopPropagation();
      });
  });
 </script>
