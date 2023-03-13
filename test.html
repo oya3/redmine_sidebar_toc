@@ -40,47 +40,49 @@ ul li.has-child.open:before {
 </script>
 <title>タイトル</title>
 </head>
-<body class="sidebar_toc">
-  <ul>
+<body>
+  <div class="sidebar_toc">
     <ul>
-      <li class="sidebar_toc_item">メニュー 1-1
+      <ul>
+        <li class="sidebar_toc_item">メニュー 1-1
+          <ul>
+            <li class="sidebar_toc_item">メニュー 1-1-1
+              <ul>
+                <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-1</a></li>
+                <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-2</a></li>
+                <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-3</a></li>
+              </ul>
+            </li>
+            <li class="sidebar_toc_item">メニュー 1-1-2
+              <ul>
+                <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-1</a></li>
+                <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-2</a></li>
+                <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-2</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <li class="sidebar_toc_item">メニュー 1-2
         <ul>
-          <li class="sidebar_toc_item">メニュー 1-1-1
+          <li class="sidebar_toc_item">メニュー 1-2-1
             <ul>
-              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-1</a></li>
-              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-2</a></li>
-              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-1-3</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-1</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-2</a></li>
+              <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-3</a></li>
             </ul>
           </li>
-          <li class="sidebar_toc_item">メニュー 1-1-2
+          <li class="sidebar_toc_item">メニュー 1-2-2
             <ul>
-              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-1</a></li>
-              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-2</a></li>
-              <li class="sidebar_toc_item"><a href="#">メニュー 1-1-2-2</a></li>
+              <li><a href="#">メニュー 1-2-2-1</a></li>
+              <li><a href="#">メニュー 1-2-2-2</a></li>
+              <li><a href="#">メニュー 1-2-2-2</a></li>
             </ul>
           </li>
         </ul>
       </li>
     </ul>
-    <li class="sidebar_toc_item">メニュー 1-2
-      <ul>
-        <li class="sidebar_toc_item">メニュー 1-2-1
-          <ul>
-            <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-1</a></li>
-            <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-2</a></li>
-            <li class="sidebar_toc_item"><a href="#">メニュー 1-2-1-3</a></li>
-          </ul>
-        </li>
-        <li class="sidebar_toc_item">メニュー 1-2-2
-          <ul>
-            <li><a href="#">メニュー 1-2-2-1</a></li>
-            <li><a href="#">メニュー 1-2-2-2</a></li>
-            <li><a href="#">メニュー 1-2-2-2</a></li>
-          </ul>  
-        </li>
-      </ul>
-    </li>
-  </ul>
+  </div>
 </body>
 </html>
 
