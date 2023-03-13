@@ -9,6 +9,8 @@ li {
 ul li.has-child:before {
   content: '+';
   padding-right: 5px;
+  position: absolute;  /* 追加 */
+  left: 0;  /* 追加 */
 }
 ul li.has-child.open:before {
   content: '-';
