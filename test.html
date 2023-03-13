@@ -6,6 +6,13 @@
 li {
   cursor: pointer;
 }
+ul li.has-child:before {
+  content: '+';
+  padding-right: 5px;
+}
+ul li.has-child.open:before {
+  content: '-';
+}
 </style>
 <script
   src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -13,15 +20,25 @@ li {
   crossorigin="anonymous"></script>
 <script type="text/javascript" language="javascript">
  $(function () {
-     $('.sidebar_toc_item').click(function(e) {
-         $(this).children('ul').slideToggle('fast');
-         e.stopPropagation();
+     $('.sidebar_toc_item').each(function(){
+         if($(this).children('ul').length > 0){
+            $(this).addClass('has-child');
+            $(this).children('ul').hide();
+         }
+     });
+
+     $('.has-child').on('click',function(e){
+         if ($(this).children('ul').length > 0) {
+            $(this).toggleClass('open');
+            $(this).children('ul').slideToggle('fast');
+            e.stopPropagation();
+         }
      });
  });
 </script>
 <title>タイトル</title>
 </head>
-<body>
+<body class="sidebar_toc">
   <ul>
     <ul>
       <li class="sidebar_toc_item">メニュー 1-1
