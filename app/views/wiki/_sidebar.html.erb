@@ -19,6 +19,7 @@
     <% href = hrefs[index] %>
     <% index += 1 %>
     <% h = node.name.delete("h").to_i %>
+    <% if false %> h4より大きい場合はtoc対象にしない<% end %>
     <% next if h > 4 %>
     <% text = node.text.delete("¶") %>
     <% items.push({:h => h, :text => text, :href => href, :index => index}) %>
@@ -28,14 +29,14 @@
     <% ni = (i+1) == items.length ? (items.length-1): (i+1) %>
     <% nh = items[ni][:h] %>
     <% if false %>
-      1. １個前のHnと現在のHnの差分でulを設定／解除を繰り返す
-      2. 現在のHnに子供が存在する場合は、</li> を付加しない
+      1. １個前のH属性(n)と現在のH属性の差分でulを設定／解除を繰り返す
+      2. 現在のH属性に子供が存在する場合は、</li> を付加しない
       <%= "<!-- ++++ #{item}, #{nh} -->".html_safe %>
       <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">[01: #{item[:index]} #{item[:h]}-#{nh}] #{item[:text]}</a>#{next_li}".html_safe %>
     <% end %>
-    <% next_li = "</li>" %>
+    <% has_child = false %>
     <% if item[:h] < nh %>
-      <% next_li = "" %>
+      <% has_child = true %>
     <% end %>
     <% if oh < item[:h] %>
       <% (item[:h] - oh).times do %>
@@ -48,7 +49,11 @@
       </li>
     <% else %>
     <% end %>
-    <li class="sidebar_toc_item"><%= "<a href=\"##{item[:href]}\">#{item[:text]}</a>#{next_li}".html_safe %>
+      <% if has_child %>
+        <%= "<li class=\"sidebar_toc_item has-child\"><span class=\"ui-icon ui-icon-circle-minus\"></span><a href=\"##{item[:href]}\">#{item[:text]}</a>".html_safe %>
+      <% else %>
+        <%= "<li class=\"sidebar_toc_item\"><span class=\"ui-icon ui-icon-blank\"></span><a href=\"##{item[:href]}\">#{item[:text]}</a></li>".html_safe %>
+      <% end %>
     <% oh = item[:h] %>
   <% end %>
   <% (oh-1).times do %>
