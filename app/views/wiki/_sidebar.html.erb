@@ -50,9 +50,9 @@
     <% else %>
     <% end %>
       <% if has_child %>
-        <%= "<li class=\"sidebar_toc_item has-child\"><span class=\"ui-icon ui-icon-circle-minus\"></span><a href=\"##{item[:href]}\">#{item[:text]}</a>".html_safe %>
+        <%= "<li class=\"sidebar_toc_item has-child\"><span class=\"opacity50 ui-icon ui-icon-circle-minus\"></span><a href=\"##{item[:href]}\">#{item[:text]}</a>".html_safe %>
       <% else %>
-        <%= "<li class=\"sidebar_toc_item\"><span class=\"ui-icon ui-icon-blank\"></span><a href=\"##{item[:href]}\">#{item[:text]}</a></li>".html_safe %>
+        <%= "<li class=\"sidebar_toc_item\"><span class=\"opacity50 ui-icon ui-icon-blank\"></span><a href=\"##{item[:href]}\">#{item[:text]}</a></li>".html_safe %>
       <% end %>
     <% oh = item[:h] %>
   <% end %>
