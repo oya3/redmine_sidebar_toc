@@ -7,7 +7,7 @@
 ### Installation
 
 ```bash
-  git clone https://github.com/twinslash/redmine_sidebar_toc.git
+  git clone https://github.com/oya3/redmine_sidebar_toc.git
   bundle install
 ```
 
@@ -17,4 +17,4 @@ Just add some h(1-6) tags to your wiki page content. Sidebar automatically provi
 
 
 ### Screenshot
-![redmine_sidebar_toc](https://raw.github.com/twinslash/redmine_sidebar_toc/master/sidebar_toc.gif)
+![redmine_sidebar_toc](https://raw.github.com/oya3/redmine_sidebar_toc/master/sidebar_toc.gif)
