@@ -5,4 +5,5 @@
 
 .opacity50 {
   opacity: 0.5;
+  display: inline-block; /* jqeury1.11 */
 }
