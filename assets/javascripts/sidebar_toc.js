@@ -26,6 +26,13 @@ $(function() {
   //     $(this).prepend('<span>+</span>');
   //   }
   // });
+  // 開始時はすべて閉じておく
+  $('.sidebar_toc_item').each(function(){
+    if($(this).children('ul').length > 0){
+      $(this).children('ul').hide();
+    }
+  });
+
   // +ボタン押下でサイドバーのtocに子要素があれば展開する
   $('.has-child > span').on('click',function(e){
     $(this).toggleClass('open');
